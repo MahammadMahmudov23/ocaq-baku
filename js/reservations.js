@@ -8,6 +8,9 @@
   const confirm = document.getElementById('res-confirm');
   if (!form) return;
 
+  // Localized string lookup (falls back to the key if i18n isn't ready)
+  const t = (k) => (window.OCAQ_I18N ? window.OCAQ_I18N.t(k) : k);
+
   const empty = v => !v || !v.trim();
   const phoneOk = v => /^[\d\s+\-()]{7,20}$/.test(v.trim());
   const dateOk = v => { const d = new Date(v + 'T00:00:00'); return !isNaN(d) && d >= new Date(new Date().toDateString()); };
@@ -41,11 +44,11 @@
     const name = f('name'), phone = f('phone'), date = f('date'), time = f('time'),
           guests = f('guests'), occasion = f('occasion'), notes = f('notes');
 
-    if (empty(name.value)) { showErr(name, 'Please enter your name.'); ok = false; }
-    if (empty(phone.value) || !phoneOk(phone.value)) { showErr(phone, 'Enter a valid phone number.'); ok = false; }
-    if (empty(date.value) || !dateOk(date.value)) { showErr(date, 'Choose a valid future date.'); ok = false; }
-    if (empty(time.value)) { showErr(time, 'Select a time.'); ok = false; }
-    if (empty(guests.value)) { showErr(guests, 'Select number of guests.'); ok = false; }
+    if (empty(name.value)) { showErr(name, t('err_name')); ok = false; }
+    if (empty(phone.value) || !phoneOk(phone.value)) { showErr(phone, t('err_phone')); ok = false; }
+    if (empty(date.value) || !dateOk(date.value)) { showErr(date, t('err_date')); ok = false; }
+    if (empty(time.value)) { showErr(time, t('err_time')); ok = false; }
+    if (empty(guests.value)) { showErr(guests, t('err_guests')); ok = false; }
     if (!ok) return;
 
     const dObj = new Date(date.value + 'T00:00:00');

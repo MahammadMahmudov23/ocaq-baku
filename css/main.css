@@ -215,6 +215,15 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 400; line-heigh
 .lang { font-size: var(--t-xs); font-weight: 600; letter-spacing: .12em; color: var(--smoke); border: 1px solid var(--line); border-radius: 2px; padding: 5px 10px; transition: color var(--d-fast), border-color var(--d-fast); }
 .lang:hover { color: var(--gold); border-color: var(--gold); }
 
+/* Language switcher (EN · RU · AZ) */
+.langs { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+.lng { font-size: 0.62rem; font-weight: 700; letter-spacing: .1em; color: var(--smoke); padding: 6px 9px; line-height: 1; transition: color var(--d-fast), background var(--d-fast); }
+.lng + .lng { border-left: 1px solid var(--line); }
+.lng:hover:not(.active) { color: var(--gold); }
+.lng.active { color: var(--ink); background: var(--grad-ember); }
+.ov-langs { margin-top: 2.5rem; align-self: flex-start; }
+.ov-langs .lng { font-size: 0.78rem; padding: 9px 14px; }
+
 .nav-toggle { display: none; flex-direction: column; gap: 6px; width: 34px; padding: 5px 0; }
 .nav-toggle span { height: 1.4px; background: var(--cream); transition: transform var(--d-mid) var(--ease), opacity var(--d-mid), width var(--d-mid); }
 .nav-toggle span:nth-child(2) { width: 64%; }
@@ -482,7 +491,7 @@ footer { background: var(--ink); border-top: 1px solid var(--line); padding: cla
 }
 @media (max-width: 760px) {
   :root { --nav-h: 70px; }
-  .nav-links, .lang { display: none; }
+  .nav-links, .nav-langs { display: none; }
   .nav-toggle { display: flex; }
   body.lock { overflow: hidden; }
   .hero-cta { flex-direction: column; align-items: flex-start; }

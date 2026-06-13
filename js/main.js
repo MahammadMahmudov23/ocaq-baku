@@ -38,12 +38,7 @@
     });
   })();
 
-  /* Language toggle (cosmetic AZ/EN) */
-  const lang = document.querySelector('.lang');
-  if (lang) {
-    let cur = 'EN';
-    lang.addEventListener('click', () => { cur = cur === 'EN' ? 'AZ' : 'EN'; lang.textContent = cur; });
-  }
+  /* Language switching is handled by js/i18n.js */
 
   /* Smooth anchor scrolling */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
